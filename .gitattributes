@@ -1,0 +1,9 @@
+# Tell GitHub to ignore native Android and iOS code for language stats
+android/** linguist-vendored
+ios/** linguist-vendored
+macos/** linguist-vendored
+windows/** linguist-vendored
+linux/** linguist-vendored
+
+# Explicitly tell GitHub to count Dart
+lib/** linguist-language=Dart
