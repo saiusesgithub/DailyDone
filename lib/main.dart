@@ -1,4 +1,4 @@
-import 'package:daily_done/screens/homescreen.dart';
+import 'package:daily_done/screens/todo_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Poppins'),
       title: 'DailyDone',
-      home: Homescreen(),
+      home: TodoScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
