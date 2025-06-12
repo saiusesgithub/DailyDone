@@ -8,7 +8,6 @@ class TodoScreen extends StatefulWidget {
 }
 
 class _TodoScreenState extends State<TodoScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +18,12 @@ class _TodoScreenState extends State<TodoScreen> {
         backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
         foregroundColor: Color.fromRGBO(255, 94, 87, 1.0),
         shadowColor: Color.fromRGBO(0, 0, 0, 0.2),
-        leading: Icon(Icons.menu_outlined),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu_outlined),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
         actions: [Icon(Icons.search)],
         actionsPadding: EdgeInsets.only(right: 12),
       ),
@@ -38,6 +42,65 @@ class _TodoScreenState extends State<TodoScreen> {
             label: 'Habits',
           ),
         ],
+      ),
+
+      drawer: Drawer(
+        backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Color.fromRGBO(13, 13, 13, 1.0)),
+              child: Column(
+                children: [
+                  Text(
+                    "Put The Logo Here",
+                    style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
+                  ),
+
+                  Text(
+                    "DailyDone",
+                    style: TextStyle(
+                      color: Color.fromRGBO(255, 94, 87, 1.0),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Divider(color: Colors.grey[800]),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text(
+                "Settings",
+                style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
+              ),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text(
+                "About",
+                style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
+              ),
+            ),
+            SizedBox(height: 420),
+
+            ElevatedButton(
+              onPressed: () {},
+
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(
+                  Color.fromRGBO(255, 94, 87, 1.0),
+                ),
+                foregroundColor: WidgetStateProperty.all(
+                  Color.fromRGBO(18, 18, 18, 1.0),
+                ),
+              ),
+              child: Text("Reset Data"),
+            ),
+          ],
+        ),
       ),
     );
   }
