@@ -8,6 +8,7 @@ class TodoScreen extends StatefulWidget {
 }
 
 class _TodoScreenState extends State<TodoScreen> {
+  var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +31,12 @@ class _TodoScreenState extends State<TodoScreen> {
       body: Container(),
 
       bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
         indicatorColor: Color.fromRGBO(255, 94, 87, 1.0),
         backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
         destinations: <Widget>[
