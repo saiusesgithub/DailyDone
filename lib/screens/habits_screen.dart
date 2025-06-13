@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class HabitsScreen extends StatefulWidget {
@@ -8,6 +9,7 @@ class HabitsScreen extends StatefulWidget {
 }
 
 class _HabitsScreenState extends State<HabitsScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

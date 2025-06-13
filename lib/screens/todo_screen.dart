@@ -1,3 +1,4 @@
+import 'package:daily_done/screens/habits_screen.dart';
 import 'package:flutter/material.dart';
 
 class TodoScreen extends StatefulWidget {
@@ -8,7 +9,10 @@ class TodoScreen extends StatefulWidget {
 }
 
 class _TodoScreenState extends State<TodoScreen> {
-  var _selectedIndex = 0;
+  var selectedIndex = 0;
+
+  List<Widget> pages = [Placeholder(), HabitsScreen()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,13 +32,13 @@ class _TodoScreenState extends State<TodoScreen> {
         actions: [Icon(Icons.search)],
         actionsPadding: EdgeInsets.only(right: 12),
       ),
-      body: Container(),
+      body: IndexedStack(index: selectedIndex, children: pages),
 
       bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
+        selectedIndex: selectedIndex,
         onDestinationSelected: (index) {
           setState(() {
-            _selectedIndex = index;
+            selectedIndex = index;
           });
         },
         indicatorColor: Color.fromRGBO(255, 94, 87, 1.0),
@@ -82,6 +86,11 @@ class _TodoScreenState extends State<TodoScreen> {
                 "Settings",
                 style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
               ),
+              onTap: () {
+                print("hello");
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/settings');
+              },
             ),
 
             ListTile(
@@ -90,6 +99,10 @@ class _TodoScreenState extends State<TodoScreen> {
                 "About",
                 style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
               ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/about');
+              },
             ),
             SizedBox(height: 420),
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
 
@@ -22,7 +23,7 @@ class _AboutPageState extends State<AboutPage> {
         leading: Builder(
           builder: (context) => IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+            onPressed: () => Navigator.pop(context),
           ),
         ),
       ),

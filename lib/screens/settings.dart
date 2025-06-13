@@ -31,7 +31,7 @@ class _SettingsPageState extends State<SettingsPage> {
         leading: Builder(
           builder: (context) => IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+            onPressed: () => Navigator.pop(context),
           ),
         ),
       ),
