@@ -1,3 +1,4 @@
+import 'package:daily_done/screens/about.dart';
 import 'package:daily_done/screens/settings.dart';
 import 'package:daily_done/screens/todo_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Poppins'),
       title: 'DailyDone',
-      home: SettingsPage(),
+      home: AboutPage(),
       debugShowCheckedModeBanner: false,
     );
   }
