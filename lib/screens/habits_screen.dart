@@ -10,8 +10,9 @@ class HabitsScreen extends StatefulWidget {
 class _HabitsScreenState extends State<HabitsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('this is habits screen', style: TextStyle(color: Colors.white)),
-    );
+    return 
+        Center(
+          child: Text('this is habits screen', style: TextStyle(color: Colors.white)),
+        );
   }
 }

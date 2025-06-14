@@ -1,4 +1,5 @@
 import 'package:daily_done/screens/about.dart';
+import 'package:daily_done/screens/addingtask.dart';
 import 'package:daily_done/screens/home_screen.dart';
 import 'package:daily_done/screens/settings.dart';
 import 'package:flutter/material.dart';

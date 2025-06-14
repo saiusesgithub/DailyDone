@@ -97,7 +97,7 @@ class _AboutPageState extends State<AboutPage> {
 
               IconButton(
                 onPressed: () =>
-                    _launchURL("https://linkedin.com/saisrujanpunati"),
+                    _launchURL("https://linkedin.com/in/saisrujanpunati/"),
                 icon: FaIcon(
                   FontAwesomeIcons.linkedin,
                   color: Color.fromRGBO(255, 94, 87, 1.0),
@@ -105,7 +105,8 @@ class _AboutPageState extends State<AboutPage> {
               ),
 
               IconButton(
-                onPressed: () {},
+                onPressed: () =>
+                    _launchURL("https://instagram.com/__saisrujan__"),
                 icon: FaIcon(
                   FontAwesomeIcons.instagram,
                   color: Color.fromRGBO(255, 94, 87, 1.0),
