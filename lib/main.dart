@@ -1,7 +1,6 @@
 import 'package:daily_done/screens/about.dart';
-import 'package:daily_done/screens/habits_screen.dart';
+import 'package:daily_done/screens/home_screen.dart';
 import 'package:daily_done/screens/settings.dart';
-import 'package:daily_done/screens/todo_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,10 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Poppins'),
       title: 'DailyDone',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/todo',
+      initialRoute: '/',
       routes: {
-        '/todo': (context) => TodoScreen(),
-        '/habits' : (context) => HabitsScreen(),
+        '/' : (context) => HomeScreen(), 
         '/settings' : (context) => SettingsPage(),
         '/about' : (context) => AboutPage(),
         },
