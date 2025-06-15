@@ -2,12 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void _launchURL(String url) async {
+// void _launchURL(String url) async {
+//   final uri = Uri.parse(url);
+//   if (await canLaunchUrl(uri)) {
+//     await launchUrl(uri, mode: LaunchMode.externalApplication);
+//   }
+// }
+
+void _launchURL(BuildContext context,String url) async {
   final uri = Uri.parse(url);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  if (!await launchUrl(uri, mode: LaunchMode.platformDefault)) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Could not open link')),
+    );
   }
 }
+
 
 class AboutPage extends StatefulWidget {
   final Color accentColor;
@@ -89,7 +99,7 @@ class _AboutPageState extends State<AboutPage> {
             children: [
               IconButton(
                 onPressed: () =>
-                    _launchURL("https://github.com/saiusesgithub/"),
+                    _launchURL(context,"https://github.com/saiusesgithub/"),
                 icon: FaIcon(
                   FontAwesomeIcons.github,
                   color: widget.accentColor,
@@ -98,7 +108,7 @@ class _AboutPageState extends State<AboutPage> {
 
               IconButton(
                 onPressed: () =>
-                    _launchURL("https://linkedin.com/in/saisrujanpunati/"),
+                    _launchURL(context,"https://linkedin.com/in/saisrujanpunati/"),
                 icon: FaIcon(
                   FontAwesomeIcons.linkedin,
                   color: widget.accentColor,
@@ -107,10 +117,10 @@ class _AboutPageState extends State<AboutPage> {
 
               IconButton(
                 onPressed: () =>
-                    _launchURL("https://instagram.com/__saisrujan__"),
+                    _launchURL(context,"https://instagram.com/__saisrujan__"),
                 icon: FaIcon(
                   FontAwesomeIcons.instagram,
-                  color: widget.accentColor,
+                  color: Color.fromRGBO(255, 94, 87, 1.0),
                 ),
               ),
             ],
