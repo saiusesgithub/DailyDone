@@ -1,0 +1,147 @@
+✅ DailyDone App – Master Todo/Improvement List
+
+
+🖌️ UI/UX Polish
+
+ Slide-in animation from bottom (instead of fade)
+
+ Swipe background: custom color + delete icon + label
+
+ Rounded corners for list tiles
+
+ Dark theme gradient background
+
+ Animate task completion (strike-through with fade)
+
+ Add empty state (e.g. “You have no tasks yet!” message with icon)
+
+ Show snackbar when task is added
+
+ Replace default checkboxes with animated switches or toggles
+
+
+🗂️ Sorting & Filtering
+
+ Sort tasks: incomplete > complete
+
+ Sort by priority within each group
+
+ Toggle: show/hide completed tasks
+
+ Filter: All / Completed / Incomplete / Priority
+
+ Group tasks by date (Today, Upcoming)
+
+ Task categories (Work, Personal, etc.)
+
+
+⏰ Task Metadata
+
+ Add due date to each task
+
+ Add time picker (optional)
+
+ Color code based on urgency (e.g., red if due today)
+
+ Show countdown or “Due in 2 days”
+
+ Mark overdue tasks visually
+
+
+🔔 Notifications
+
+ Local notifications for due tasks
+
+ Daily reminder: “You have 3 tasks pending today”
+
+
+📝 Task Editing
+
+ Tap on task to edit it
+
+ Edit title, description, priority, due date
+
+ Cancel/save edit with animation
+
+
+🧰 Data Management
+
+ Add “Reset All Tasks” button with confirmation dialog
+
+ Add Undo action for deleted task
+
+ Export tasks to CSV
+
+ Store tasks to cloud (Firebase or Drive)
+
+📱 Responsive Design
+
+ Adapt layout for tablets
+
+ Test spacing on small devices
+
+ Responsive padding/margin based on screen size
+
+⚙️ Settings Screen
+
+ Toggle animations on/off
+
+ Toggle completed task visibility
+
+ “Reset All Settings” button
+
+ Theme switcher: Dark / Light / System
+
+🏠 Home / App Structure
+
+ Summary screen: Total / Done / Overdue
+
+ Dashboard with progress ring or bar chart
+
+ Welcome message (e.g., “Good morning, Srujan!”)
+
+ Drag & reorder tasks (advanced)
+
+🎨 Branding
+
+ Add logo to home screen as header
+
+ Add splash screen (logo fade-in)
+
+ Customize system status bar color
+
+🌐 About Page
+
+ Animate developer name/logo on scroll
+
+ Add link to GitHub project
+
+ Add "Rate this app" button (for release build)
+
+🧪 Performance & Code Structure
+
+ Extract Hive logic to todo_service.dart
+
+ Extract reusable widgets (TaskCard, AccentPicker, etc.)
+
+ Use Provider or Riverpod for state management
+
+ Use animations only for visible items
+
+ Use keys properly for AnimatedSwitcher/Dismissible
+
+ Lazy load tasks if count > 100
+
+ Add unit tests for task logic (optional)
+
+💡 Stretch Goals
+
+ Add voice input to create task
+
+ Add motivational quotes when list is empty
+
+ Add habit tracking section (already planned)
+
+ Add weekly progress summary (via charts)
+
+ Create widget for home screen (Android)
