@@ -1,8 +1,18 @@
 import 'package:daily_done/screens/about.dart';
 import 'package:daily_done/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:daily_done/models/todo_model.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(TodoAdapter()); // ✅ register your model
+  await Hive.openBox<Todo>('todos'); 
+  
   runApp(const MyApp());
 }
 
@@ -16,7 +26,26 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Color accentColor = Color.fromRGBO(255, 94, 87, 1.0);
 
-  void updateAccent(Color newColor) {
+  @override
+  void initState() {
+    super.initState();
+    loadAccentColor();
+  }
+
+  void loadAccentColor() async{
+    final prefs = await SharedPreferences.getInstance();
+    int? savedColor = prefs.getInt('accentColor');
+    if (savedColor != null) {
+      setState(() {
+        accentColor = Color(savedColor);
+      });
+    }
+  }
+
+  void updateAccent(Color newColor) async{
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('accentColor', newColor.value); // save as int
+
     setState(() {
       accentColor = newColor;
     });

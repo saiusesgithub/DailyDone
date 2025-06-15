@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import '../models/todo_model.dart';
 
 class Addingtask extends StatefulWidget {
   final Color accentColor;
-  const Addingtask({super.key,required this.accentColor});
+  const Addingtask({super.key, required this.accentColor});
 
   @override
   State<Addingtask> createState() => _AddingtaskState();
@@ -45,19 +47,19 @@ class _AddingtaskState extends State<Addingtask> {
                 borderSide: BorderSide(color: widget.accentColor),
               ),
               enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color:widget.accentColor),
+                borderSide: BorderSide(color: widget.accentColor),
               ),
               labelText: "Title",
               labelStyle: TextStyle(
                 color: widget.accentColor,
                 fontWeight: FontWeight.bold,
-                fontSize: 15
+                fontSize: 15,
               ),
               floatingLabelAlignment: FloatingLabelAlignment.center,
             ),
           ),
-          
-          SizedBox(height: 20,),
+
+          SizedBox(height: 20),
 
           TextField(
             controller: descriptioncontroller,
@@ -72,13 +74,12 @@ class _AddingtaskState extends State<Addingtask> {
               labelStyle: TextStyle(
                 color: widget.accentColor,
                 fontWeight: FontWeight.bold,
-                fontSize: 15
+                fontSize: 15,
               ),
               floatingLabelAlignment: FloatingLabelAlignment.center,
             ),
             maxLines: 3,
           ),
-
 
           SizedBox(height: 20),
           SwitchListTile(
@@ -99,12 +100,24 @@ class _AddingtaskState extends State<Addingtask> {
           ),
 
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              final todoBox = Hive.box<Todo>('todos');
+
+              final newTodo = Todo(
+                title: titlecontroller.text,
+                description: descriptioncontroller.text,
+                isDone: false,
+                priority: priority,
+              );
+
+              todoBox.add(newTodo);
+              Navigator.pop(context);
+            },
+            
+    
             child: Text("Add"),
             style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(
-                widget.accentColor,
-              ),
+              backgroundColor: WidgetStatePropertyAll(widget.accentColor),
               foregroundColor: WidgetStatePropertyAll(
                 Color.fromRGBO(13, 13, 13, 1.0),
               ),
