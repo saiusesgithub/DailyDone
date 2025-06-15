@@ -12,7 +12,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
   Widget build(BuildContext context) {
     return 
         Center(
-          child: Text('this is habits screen', style: TextStyle(color: Colors.white)),
+          child: Text('Under Development', style: TextStyle(color: Colors.white)),
         );
   }
 }

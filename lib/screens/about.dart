@@ -2,26 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-// void _launchURL(String url) async {
-//   final uri = Uri.parse(url);
-//   if (await canLaunchUrl(uri)) {
-//     await launchUrl(uri, mode: LaunchMode.externalApplication);
-//   }
-// }
-
-void _launchURL(BuildContext context,String url) async {
+void _launchURL(BuildContext context, String url) async {
   final uri = Uri.parse(url);
   if (!await launchUrl(uri, mode: LaunchMode.platformDefault)) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Could not open link')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('Could not open link')));
   }
 }
 
-
 class AboutPage extends StatefulWidget {
   final Color accentColor;
-  const AboutPage({super.key,required this.accentColor});
+  const AboutPage({super.key, required this.accentColor});
 
   @override
   State<AboutPage> createState() => _AboutPageState();
@@ -48,7 +40,12 @@ class _AboutPageState extends State<AboutPage> {
       body: Column(
         children: [
           Center(
-            child: Text("Add Logo Here", style: TextStyle(color: Colors.white)),
+            child: Image.asset(
+              'assets/icons/DailyDoneLogo.png',
+              height: 120,
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.low,
+            ),
           ),
           Text(
             "DailyDone",
@@ -60,10 +57,7 @@ class _AboutPageState extends State<AboutPage> {
           ),
           Text(
             "version 0.1",
-            style: TextStyle(
-              color: widget.accentColor,
-              fontSize: 12,
-            ),
+            style: TextStyle(color: widget.accentColor, fontSize: 12),
           ),
 
           SizedBox(height: 70),
@@ -72,10 +66,7 @@ class _AboutPageState extends State<AboutPage> {
 
           Text(
             "Developed by",
-            style: TextStyle(
-              color: widget.accentColor,
-              fontSize: 20,
-            ),
+            style: TextStyle(color: widget.accentColor, fontSize: 20),
           ),
           SizedBox(height: 10),
           Text(
@@ -88,10 +79,7 @@ class _AboutPageState extends State<AboutPage> {
           ),
           Text(
             "Student | Flutter App Developer",
-            style: TextStyle(
-              color: widget.accentColor,
-              fontSize: 15,
-            ),
+            style: TextStyle(color: widget.accentColor, fontSize: 15),
           ),
           SizedBox(height: 10),
           Row(
@@ -99,7 +87,7 @@ class _AboutPageState extends State<AboutPage> {
             children: [
               IconButton(
                 onPressed: () =>
-                    _launchURL(context,"https://github.com/saiusesgithub/"),
+                    _launchURL(context, "https://github.com/saiusesgithub/"),
                 icon: FaIcon(
                   FontAwesomeIcons.github,
                   color: widget.accentColor,
@@ -107,8 +95,10 @@ class _AboutPageState extends State<AboutPage> {
               ),
 
               IconButton(
-                onPressed: () =>
-                    _launchURL(context,"https://linkedin.com/in/saisrujanpunati/"),
+                onPressed: () => _launchURL(
+                  context,
+                  "https://linkedin.com/in/saisrujanpunati/",
+                ),
                 icon: FaIcon(
                   FontAwesomeIcons.linkedin,
                   color: widget.accentColor,
@@ -117,7 +107,7 @@ class _AboutPageState extends State<AboutPage> {
 
               IconButton(
                 onPressed: () =>
-                    _launchURL(context,"https://instagram.com/__saisrujan__"),
+                    _launchURL(context, "https://instagram.com/__saisrujan__"),
                 icon: FaIcon(
                   FontAwesomeIcons.instagram,
                   color: widget.accentColor,

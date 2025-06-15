@@ -21,8 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-      List<Widget> pages = [TodoScreen(accentColor: widget.accentColor), HabitsScreen()];
-    
+    List<Widget> pages = [
+      TodoScreen(accentColor: widget.accentColor),
+      HabitsScreen(),
+    ];
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
@@ -72,9 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(color: Color.fromRGBO(13, 13, 13, 1.0)),
               child: Column(
                 children: [
-                  Text(
-                    "Put The Logo Here",
-                    style: TextStyle(color: widget.accentColor),
+                  Image.asset(
+                    'assets/icons/DailyDoneLogo.png',
+                    height: 100,
+                    fit: BoxFit.contain,
+                    filterQuality: FilterQuality.low,
                   ),
 
                   Text(

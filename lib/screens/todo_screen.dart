@@ -21,6 +21,12 @@ class _TodoScreenState extends State<TodoScreen> {
       builder: (context, Box<Todo> box, _) {
         final todos = box.values.toList();
 
+        todos.sort((a,b){
+          if(a.isDone != b.isDone) return a.isDone ?1 : -1;
+          if(a.priority != b.priority) return a.isDone ?1 : -1;
+          return 0;
+        });
+
         return Column(
           children: [
             Expanded(
