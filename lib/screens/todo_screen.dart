@@ -1,7 +1,9 @@
+import 'package:daily_done/screens/addingtask.dart';
 import 'package:flutter/material.dart';
 
 class TodoScreen extends StatefulWidget {
-  const TodoScreen({super.key});
+  final Color accentColor;
+  const TodoScreen({super.key, required this.accentColor});
 
   @override
   State<TodoScreen> createState() => _TodoScreenState();
@@ -12,25 +14,31 @@ class _TodoScreenState extends State<TodoScreen> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+      children: [
+        Text('this is todo screen', style: TextStyle(color: Colors.white)),
 
-          Text('this is todo screen', style: TextStyle(color: Colors.white)),
-
-          Container(
-            padding: EdgeInsets.all(15),
-            alignment: Alignment.bottomRight,
-            child: FloatingActionButton.extended(
-              onPressed: () {},
-              label: Text(
-                "New Task",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              icon: Icon(Icons.add),
-              backgroundColor: Color.fromRGBO(255, 94, 87, 1.0),
-              foregroundColor: Color.fromRGBO(13, 13, 13, 1.0),
+        Container(
+          padding: EdgeInsets.all(15),
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => Addingtask(accentColor: widget.accentColor),
+                ),
+              );
+            },
+            label: Text(
+              "New Task",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
+            icon: Icon(Icons.add),
+            backgroundColor: widget.accentColor,
+            foregroundColor: Color.fromRGBO(13, 13, 13, 1.0),
           ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 }

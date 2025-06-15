@@ -1,9 +1,16 @@
 import 'package:daily_done/screens/habits_screen.dart';
+import 'package:daily_done/screens/settings.dart';
 import 'package:daily_done/screens/todo_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Color accentColor;
+  final ValueChanged<Color> onAccentColorChanged;
+  const HomeScreen({
+    super.key,
+    required this.accentColor,
+    required this.onAccentColorChanged,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -12,17 +19,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var selectedIndex = 0;
 
-  List<Widget> pages = [TodoScreen(), HabitsScreen()];
-
   @override
   Widget build(BuildContext context) {
+      List<Widget> pages = [TodoScreen(accentColor: widget.accentColor), HabitsScreen()];
+    
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
       appBar: AppBar(
         title: Text("DailyDone", style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
-        foregroundColor: Color.fromRGBO(255, 94, 87, 1.0),
+        foregroundColor: widget.accentColor,
         shadowColor: Color.fromRGBO(0, 0, 0, 0.2),
         leading: Builder(
           builder: (context) => IconButton(
@@ -42,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIndex = index;
           });
         },
-        indicatorColor: Color.fromRGBO(255, 94, 87, 1.0),
+        indicatorColor: widget.accentColor,
         backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
         destinations: <Widget>[
           NavigationDestination(
@@ -66,13 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     "Put The Logo Here",
-                    style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
+                    style: TextStyle(color: widget.accentColor),
                   ),
 
                   Text(
                     "DailyDone",
                     style: TextStyle(
-                      color: Color.fromRGBO(255, 94, 87, 1.0),
+                      color: widget.accentColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -85,34 +93,38 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: Icon(Icons.settings),
               title: Text(
                 "Settings",
-                style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
+                style: TextStyle(color: widget.accentColor),
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, '/settings');
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => SettingsPage(
+                      currentAccent: widget.accentColor,
+                      onAccentColorChanged: widget.onAccentColorChanged,
+                    ),
+                  ),
+                );
               },
             ),
 
             ListTile(
               leading: Icon(Icons.info),
-              title: Text(
-                "About",
-                style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
-              ),
+              title: Text("About", style: TextStyle(color: widget.accentColor)),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/about');
               },
             ),
-            // SizedBox(height: 420),
 
+            // SizedBox(height: 420),
             ElevatedButton(
               onPressed: () {},
 
               style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(
-                  Color.fromRGBO(255, 94, 87, 1.0),
-                ),
+                backgroundColor: WidgetStateProperty.all(widget.accentColor),
                 foregroundColor: WidgetStateProperty.all(
                   Color.fromRGBO(18, 18, 18, 1.0),
                 ),

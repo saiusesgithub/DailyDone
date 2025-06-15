@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+  final Color currentAccent;
+  final ValueChanged<Color> onAccentColorChanged;
+  const SettingsPage({
+    super.key,
+    required this.currentAccent,
+    required this.onAccentColorChanged,
+  });
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -10,13 +16,17 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   Map<Color, String> accentColors = {
     Color.fromRGBO(255, 94, 87, 1.0): "Red Peach",
-    Color.fromRGBO(255, 107, 92, 1.0): "Softer Coral",
-    Color.fromRGBO(255, 182, 166, 1.0): "Light Peach",
-    Colors.tealAccent: "Teal",
-    Colors.amber: "Amber",
+    Color.fromRGBO(50, 224, 196, 1.0): 'Mint Green',
+    Color.fromRGBO(58, 134, 255, 1.0): 'Royal Blue',
+    Color.fromRGBO(255, 182, 39, 1.0): 'Amber',
   };
 
-  Color selectedAccent = Color.fromRGBO(255, 94, 87, 1.0);
+  late Color selectedAccent;
+  @override
+  void initState() {
+    super.initState();
+    selectedAccent = widget.currentAccent;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Text("Settings", style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
-        foregroundColor: Color.fromRGBO(255, 94, 87, 1.0),
+        foregroundColor: selectedAccent,
         shadowColor: Color.fromRGBO(0, 0, 0, 0.2),
         leading: Builder(
           builder: (context) => IconButton(
@@ -41,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
             leading: Icon(Icons.palette_outlined),
             title: Text(
               "Accent Colour",
-              style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
+              style: TextStyle(color: selectedAccent),
             ),
             trailing: DropdownButton(
               dropdownColor: Color.fromRGBO(13, 13, 13, 1.0),
@@ -70,6 +80,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   setState(() {
                     selectedAccent = newcolor;
                   });
+                  widget.onAccentColorChanged(newcolor);
                 }
               },
             ),

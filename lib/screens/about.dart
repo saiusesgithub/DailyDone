@@ -10,7 +10,8 @@ void _launchURL(String url) async {
 }
 
 class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+  final Color accentColor;
+  const AboutPage({super.key,required this.accentColor});
 
   @override
   State<AboutPage> createState() => _AboutPageState();
@@ -25,7 +26,7 @@ class _AboutPageState extends State<AboutPage> {
         title: Text("About", style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
-        foregroundColor: Color.fromRGBO(255, 94, 87, 1.0),
+        foregroundColor: widget.accentColor,
         shadowColor: Color.fromRGBO(0, 0, 0, 0.2),
         leading: Builder(
           builder: (context) => IconButton(
@@ -42,7 +43,7 @@ class _AboutPageState extends State<AboutPage> {
           Text(
             "DailyDone",
             style: TextStyle(
-              color: Color.fromRGBO(255, 94, 87, 1.0),
+              color: widget.accentColor,
               fontWeight: FontWeight.bold,
               fontSize: 25,
             ),
@@ -50,7 +51,7 @@ class _AboutPageState extends State<AboutPage> {
           Text(
             "version 0.1",
             style: TextStyle(
-              color: Color.fromRGBO(255, 94, 87, 1.0),
+              color: widget.accentColor,
               fontSize: 12,
             ),
           ),
@@ -62,7 +63,7 @@ class _AboutPageState extends State<AboutPage> {
           Text(
             "Developed by",
             style: TextStyle(
-              color: Color.fromRGBO(255, 94, 87, 1.0),
+              color: widget.accentColor,
               fontSize: 20,
             ),
           ),
@@ -70,7 +71,7 @@ class _AboutPageState extends State<AboutPage> {
           Text(
             "sAI sRUJAN",
             style: TextStyle(
-              color: Color.fromRGBO(255, 94, 87, 1.0),
+              color: widget.accentColor,
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
@@ -78,7 +79,7 @@ class _AboutPageState extends State<AboutPage> {
           Text(
             "Student | Flutter App Developer",
             style: TextStyle(
-              color: Color.fromRGBO(255, 94, 87, 1.0),
+              color: widget.accentColor,
               fontSize: 15,
             ),
           ),
@@ -91,7 +92,7 @@ class _AboutPageState extends State<AboutPage> {
                     _launchURL("https://github.com/saiusesgithub/"),
                 icon: FaIcon(
                   FontAwesomeIcons.github,
-                  color: Color.fromRGBO(255, 94, 87, 1.0),
+                  color: widget.accentColor,
                 ),
               ),
 
@@ -100,7 +101,7 @@ class _AboutPageState extends State<AboutPage> {
                     _launchURL("https://linkedin.com/in/saisrujanpunati/"),
                 icon: FaIcon(
                   FontAwesomeIcons.linkedin,
-                  color: Color.fromRGBO(255, 94, 87, 1.0),
+                  color: widget.accentColor,
                 ),
               ),
 
@@ -109,7 +110,7 @@ class _AboutPageState extends State<AboutPage> {
                     _launchURL("https://instagram.com/__saisrujan__"),
                 icon: FaIcon(
                   FontAwesomeIcons.instagram,
-                  color: Color.fromRGBO(255, 94, 87, 1.0),
+                  color: widget.accentColor,
                 ),
               ),
             ],

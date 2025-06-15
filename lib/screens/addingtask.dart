@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Addingtask extends StatefulWidget {
-  const Addingtask({super.key});
+  final Color accentColor;
+  const Addingtask({super.key,required this.accentColor});
 
   @override
   State<Addingtask> createState() => _AddingtaskState();
@@ -24,7 +25,7 @@ class _AddingtaskState extends State<Addingtask> {
         ),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
-        foregroundColor: Color.fromRGBO(255, 94, 87, 1.0),
+        foregroundColor: widget.accentColor,
         shadowColor: Color.fromRGBO(0, 0, 0, 0.2),
         leading: Builder(
           builder: (context) => IconButton(
@@ -41,14 +42,14 @@ class _AddingtaskState extends State<Addingtask> {
             controller: titlecontroller,
             decoration: InputDecoration(
               focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color.fromRGBO(255, 94, 87, 1.0)),
+                borderSide: BorderSide(color: widget.accentColor),
               ),
               enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color.fromRGBO(255, 94, 87, 1.0)),
+                borderSide: BorderSide(color:widget.accentColor),
               ),
               labelText: "Title",
               labelStyle: TextStyle(
-                color: Color.fromRGBO(255, 94, 87, 1.0),
+                color: widget.accentColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 15
               ),
@@ -62,14 +63,14 @@ class _AddingtaskState extends State<Addingtask> {
             controller: descriptioncontroller,
             decoration: InputDecoration(
               focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color.fromRGBO(255, 94, 87, 1.0)),
+                borderSide: BorderSide(color: widget.accentColor),
               ),
               enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color.fromRGBO(255, 94, 87, 1.0)),
+                borderSide: BorderSide(color: widget.accentColor),
               ),
               labelText: "Description",
               labelStyle: TextStyle(
-                color: Color.fromRGBO(255, 94, 87, 1.0),
+                color: widget.accentColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 15
               ),
@@ -89,12 +90,12 @@ class _AddingtaskState extends State<Addingtask> {
             },
             title: Text(
               "Mark As Important",
-              style: TextStyle(color: Color.fromRGBO(255, 94, 87, 1.0)),
+              style: TextStyle(color: widget.accentColor),
             ),
-            inactiveThumbColor: Color.fromRGBO(255, 94, 87, 1.0),
+            inactiveThumbColor: widget.accentColor,
             inactiveTrackColor: Color.fromRGBO(13, 13, 13, 1.0),
             activeColor: Color.fromRGBO(13, 13, 13, 1.0),
-            activeTrackColor: Color.fromRGBO(255, 94, 87, 1.0),
+            activeTrackColor: widget.accentColor,
           ),
 
           ElevatedButton(
@@ -102,7 +103,7 @@ class _AddingtaskState extends State<Addingtask> {
             child: Text("Add"),
             style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(
-                Color.fromRGBO(255, 94, 87, 1.0),
+                widget.accentColor,
               ),
               foregroundColor: WidgetStatePropertyAll(
                 Color.fromRGBO(13, 13, 13, 1.0),
