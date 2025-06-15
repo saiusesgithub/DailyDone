@@ -35,7 +35,12 @@ class _TodoScreenState extends State<TodoScreen> {
                     ),
                     subtitle: Text(
                       todo.description,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.white,
+                        decoration: todo.isDone
+                            ? TextDecoration.lineThrough
+                            : null,
+                      ),
                     ),
                     trailing: Checkbox(
                       value: todo.isDone,
