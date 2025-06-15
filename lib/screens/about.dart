@@ -120,7 +120,7 @@ class _AboutPageState extends State<AboutPage> {
                     _launchURL(context,"https://instagram.com/__saisrujan__"),
                 icon: FaIcon(
                   FontAwesomeIcons.instagram,
-                  color: Color.fromRGBO(255, 94, 87, 1.0),
+                  color: widget.accentColor,
                 ),
               ),
             ],

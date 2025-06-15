@@ -28,30 +28,50 @@ class _TodoScreenState extends State<TodoScreen> {
                 itemCount: todos.length,
                 itemBuilder: (context, index) {
                   final todo = todos[index];
-                  return ListTile(
-                    title: Text(
-                      todo.title,
-                      style: TextStyle(color: Colors.white),
+                  return Dismissible(
+                    key: Key(todo.key.toString()),
+                    onDismissed: (direction) {
+                      todo.delete();
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text('Task deleted')));
+                    },
+                    background: Container(
+                      color: Colors.red,
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.only(right: 20),
+                      child: Icon(Icons.delete, color: Colors.white),
                     ),
-                    subtitle: Text(
-                      todo.description,
-                      style: TextStyle(
-                        color: Colors.white,
-                        decoration: todo.isDone
-                            ? TextDecoration.lineThrough
-                            : null,
+                    child: ListTile(
+                      title: Text(
+                        todo.title,
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: todo.isDone
+                              ? TextDecoration.lineThrough
+                              : null,
+                        ),
                       ),
-                    ),
-                    trailing: Checkbox(
-                      value: todo.isDone,
-                      onChanged: (value) {
-                        todo.isDone = value!;
-                        todo.save();
+                      subtitle: Text(
+                        todo.description,
+                        style: TextStyle(
+                          color: Colors.white,
+                          decoration: todo.isDone
+                              ? TextDecoration.lineThrough
+                              : null,
+                        ),
+                      ),
+                      trailing: Checkbox(
+                        value: todo.isDone,
+                        onChanged: (value) {
+                          todo.isDone = value!;
+                          todo.save();
+                        },
+                      ),
+                      onLongPress: () {
+                        todo.delete();
                       },
                     ),
-                    onLongPress: () {
-                      todo.delete();
-                    },
                   );
                 },
               ),
