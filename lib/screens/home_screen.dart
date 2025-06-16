@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     List<Widget> pages = [
       TodoScreen(accentColor: widget.accentColor),
-      HabitsScreen(),
+      HabitsScreen(accentColor: widget.accentColor,),
     ];
 
     return Scaffold(

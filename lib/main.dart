@@ -1,17 +1,22 @@
 import 'package:daily_done/screens/about.dart';
+import 'package:daily_done/screens/habits_screen.dart';
 import 'package:daily_done/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:daily_done/models/todo_model.dart';
+import 'package:daily_done/models/habits_model.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
   Hive.registerAdapter(TodoAdapter()); // ✅ register your model
-  await Hive.openBox<Todo>('todos'); 
+  await Hive.openBox<Todo>('todos');
+
+  Hive.registerAdapter(HabitsAdapter());
+  await Hive.openBox<Habits>('habitBox'); 
   
   runApp(const MyApp());
 }
@@ -67,6 +72,7 @@ class _MyAppState extends State<MyApp> {
       home: HomeScreen(accentColor: accentColor, onAccentColorChanged: updateAccent),
       routes: {
         '/about': (context) => AboutPage(accentColor: accentColor,),
+        '/habits' : (context) => HabitsScreen(accentColor: accentColor),
       }
     );
   }
