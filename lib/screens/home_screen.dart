@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
 
     return Scaffold(
+      drawerEdgeDragWidth: MediaQuery.of(context).size.width * 0.9, 
       backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
       appBar: AppBar(
         title: Text("DailyDone", style: TextStyle(fontWeight: FontWeight.bold)),
@@ -66,76 +67,97 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      drawer: Drawer(
-        backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Color.fromRGBO(13, 13, 13, 1.0)),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/icons/DailyDoneLogo.png',
-                    height: 100,
-                    fit: BoxFit.contain,
-                    filterQuality: FilterQuality.low,
-                  ),
-
-                  Text(
-                    "DailyDone",
-                    style: TextStyle(
-                      color: widget.accentColor,
-                      fontWeight: FontWeight.bold,
+      drawer: SizedBox(
+        width: 250,
+        child: Drawer(
+          backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  children: [
+                    DrawerHeader(
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(10, 10, 10, 1.0),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/icons/DailyDoneLogo_NoBackground.png',
+                            height: 100,
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.low,
+                          ),
+                
+                          Text(
+                            "DailyDone",
+                            style: TextStyle(
+                              color: widget.accentColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Divider(color: Colors.grey[800]),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text(
-                "Settings",
-                style: TextStyle(color: widget.accentColor),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => SettingsPage(
-                      currentAccent: widget.accentColor,
-                      onAccentColorChanged: widget.onAccentColorChanged,
+                
+                    ListTile(
+                      leading: Icon(Icons.settings),
+                      title: Text(
+                        "Settings",
+                        style: TextStyle(color: widget.accentColor),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => SettingsPage(
+                              currentAccent: widget.accentColor,
+                              onAccentColorChanged: widget.onAccentColorChanged,
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  ),
-                );
-              },
-            ),
-
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text("About", style: TextStyle(color: widget.accentColor)),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/about');
-              },
-            ),
-
-            // SizedBox(height: 420),
-            ElevatedButton(
-              onPressed: () {},
-
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(widget.accentColor),
-                foregroundColor: WidgetStateProperty.all(
-                  Color.fromRGBO(18, 18, 18, 1.0),
+                
+                    ListTile(
+                      leading: Icon(Icons.info,),
+                      title: Text(
+                        "About",
+                        style: TextStyle(color: widget.accentColor),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/about');
+                      },
+                    ),
+                  ],
                 ),
               ),
-              child: Text("Reset Data"),
-            ),
-          ],
+
+              // SizedBox(height: 420),
+              Container(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: () {},
+
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(
+                        widget.accentColor,
+                      ),
+                      foregroundColor: WidgetStateProperty.all(
+                        Color.fromRGBO(18, 18, 18, 1.0),
+                      ),
+                    ),
+                    child: Text("Reset Data"),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

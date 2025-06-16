@@ -37,94 +37,108 @@ class _AddingtaskState extends State<Addingtask> {
         ),
       ),
 
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextField(
-            controller: titlecontroller,
-            decoration: InputDecoration(
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: widget.accentColor),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20),
+                    TextField(
+                      controller: titlecontroller,
+                      decoration: InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: widget.accentColor),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: widget.accentColor),
+                        ),
+                        labelText: "Title",
+                        labelStyle: TextStyle(
+                          color: widget.accentColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                        floatingLabelAlignment: FloatingLabelAlignment.center,
+                      ),
+                    ),
+
+                    SizedBox(height: 20),
+
+                    TextField(
+                        controller: descriptioncontroller,
+                        decoration: InputDecoration(
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: widget.accentColor),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: widget.accentColor),
+                          ),
+                          labelText: "Description",
+                          labelStyle: TextStyle(
+                            color: widget.accentColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                          floatingLabelAlignment: FloatingLabelAlignment.center,
+                        ),
+                        maxLines: 3,
+                        minLines: 1,
+                      ),
+                    
+
+                    SizedBox(height: 20),
+                    SwitchListTile(
+                      value: priority,
+                      onChanged: (value) {
+                        setState(() {
+                          priority = value;
+                        });
+                      },
+                      title: Text(
+                        "Mark As Important",
+                        style: TextStyle(color: widget.accentColor),
+                      ),
+                      inactiveThumbColor: widget.accentColor,
+                      inactiveTrackColor: Color.fromRGBO(13, 13, 13, 1.0),
+                      activeColor: Color.fromRGBO(13, 13, 13, 1.0),
+                      activeTrackColor: widget.accentColor,
+                    ),
+                  ],
+                ),
               ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: widget.accentColor),
-              ),
-              labelText: "Title",
-              labelStyle: TextStyle(
-                color: widget.accentColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-              floatingLabelAlignment: FloatingLabelAlignment.center,
             ),
-          ),
 
-          SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                final todoBox = Hive.box<Todo>('todos');
 
-          TextField(
-            controller: descriptioncontroller,
-            decoration: InputDecoration(
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: widget.accentColor),
+                final newTodo = Todo(
+                  title: titlecontroller.text,
+                  description: descriptioncontroller.text,
+                  isDone: false,
+                  priority: priority,
+                );
+
+                todoBox.add(newTodo);
+                Navigator.pop(context);
+              },
+
+              child: Text("Add"),
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(widget.accentColor),
+                foregroundColor: WidgetStatePropertyAll(
+                  Color.fromRGBO(13, 13, 13, 1.0),
+                ),
+                minimumSize: WidgetStatePropertyAll(Size(100, 40)),
               ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: widget.accentColor),
-              ),
-              labelText: "Description",
-              labelStyle: TextStyle(
-                color: widget.accentColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-              floatingLabelAlignment: FloatingLabelAlignment.center,
             ),
-            maxLines: 3,
-          ),
-
-          SizedBox(height: 20),
-          SwitchListTile(
-            value: priority,
-            onChanged: (value) {
-              setState(() {
-                priority = value;
-              });
-            },
-            title: Text(
-              "Mark As Important",
-              style: TextStyle(color: widget.accentColor),
-            ),
-            inactiveThumbColor: widget.accentColor,
-            inactiveTrackColor: Color.fromRGBO(13, 13, 13, 1.0),
-            activeColor: Color.fromRGBO(13, 13, 13, 1.0),
-            activeTrackColor: widget.accentColor,
-          ),
-
-          ElevatedButton(
-            onPressed: () {
-              final todoBox = Hive.box<Todo>('todos');
-
-              final newTodo = Todo(
-                title: titlecontroller.text,
-                description: descriptioncontroller.text,
-                isDone: false,
-                priority: priority,
-              );
-
-              todoBox.add(newTodo);
-              Navigator.pop(context);
-            },
-            
-    
-            child: Text("Add"),
-            style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(widget.accentColor),
-              foregroundColor: WidgetStatePropertyAll(
-                Color.fromRGBO(13, 13, 13, 1.0),
-              ),
-              minimumSize: WidgetStatePropertyAll(Size(100, 40)),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

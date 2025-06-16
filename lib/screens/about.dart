@@ -41,7 +41,7 @@ class _AboutPageState extends State<AboutPage> {
         children: [
           Center(
             child: Image.asset(
-              'assets/icons/DailyDoneLogo.png',
+              'assets/icons/DailyDoneLogo_NoBackground.png',
               height: 120,
               fit: BoxFit.contain,
               filterQuality: FilterQuality.low,
@@ -60,9 +60,7 @@ class _AboutPageState extends State<AboutPage> {
             style: TextStyle(color: widget.accentColor, fontSize: 12),
           ),
 
-          SizedBox(height: 70),
-          Divider(),
-          SizedBox(height: 200),
+          SizedBox(height: 250),
 
           Text(
             "Developed by",
@@ -114,6 +112,20 @@ class _AboutPageState extends State<AboutPage> {
                 ),
               ),
             ],
+          ),
+
+          SizedBox(height: 40),
+
+          ElevatedButton(
+            onPressed: () => _launchURL(
+              context,
+              "https://github.com/saiusesgithub/dailydone",
+            ),
+            child: Text("View Source Code On Github"),
+            style: ElevatedButton.styleFrom(
+              foregroundColor: widget.accentColor,
+              backgroundColor: Color.fromRGBO(13, 13, 13, 1.0),
+            ),
           ),
         ],
       ),
