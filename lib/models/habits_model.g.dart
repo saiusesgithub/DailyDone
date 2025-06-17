@@ -8,7 +8,7 @@ part of 'habits_model.dart';
 
 class HabitsAdapter extends TypeAdapter<Habits> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
   Habits read(BinaryReader reader) {
@@ -16,11 +16,12 @@ class HabitsAdapter extends TypeAdapter<Habits> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Habits()
-      ..title = fields[0] as String
-      ..description = fields[1] as String?
-      ..createdon = fields[2] as DateTime
-      ..datescompleted = fields[3] as DateTime;
+    return Habits(
+      title: fields[0] as String,
+      description: fields[1] as String?,
+      createdon: fields[2] as DateTime,
+      datescompleted: (fields[3] as List).cast<DateTime>(),
+    );
   }
 
   @override

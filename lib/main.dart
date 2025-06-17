@@ -1,4 +1,5 @@
 import 'package:daily_done/screens/about.dart';
+import 'package:daily_done/screens/addinghabit.dart';
 import 'package:daily_done/screens/habits_screen.dart';
 import 'package:daily_done/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:daily_done/models/todo_model.dart';
 import 'package:daily_done/models/habits_model.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
@@ -16,8 +17,8 @@ void main() async{
   await Hive.openBox<Todo>('todos');
 
   Hive.registerAdapter(HabitsAdapter());
-  await Hive.openBox<Habits>('habitBox'); 
-  
+  await Hive.openBox<Habits>('habitBox');
+
   runApp(const MyApp());
 }
 
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
     loadAccentColor();
   }
 
-  void loadAccentColor() async{
+  void loadAccentColor() async {
     final prefs = await SharedPreferences.getInstance();
     int? savedColor = prefs.getInt('accentColor');
     if (savedColor != null) {
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  void updateAccent(Color newColor) async{
+  void updateAccent(Color newColor) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('accentColor', newColor.value); // save as int
 
@@ -69,11 +70,15 @@ class _MyAppState extends State<MyApp> {
       title: 'DailyDone',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      home: HomeScreen(accentColor: accentColor, onAccentColorChanged: updateAccent),
+      home: HomeScreen(
+        accentColor: accentColor,
+        onAccentColorChanged: updateAccent,
+      ),
+
       routes: {
-        '/about': (context) => AboutPage(accentColor: accentColor,),
-        '/habits' : (context) => HabitsScreen(accentColor: accentColor),
-      }
+        '/about': (context) => AboutPage(accentColor: accentColor),
+        '/habits': (context) => HabitsScreen(accentColor: accentColor),
+      },
     );
   }
 }

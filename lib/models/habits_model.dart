@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'habits_model.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 1)
 class Habits extends HiveObject {
   @HiveField(0)
   String title;
@@ -14,7 +14,7 @@ class Habits extends HiveObject {
   DateTime createdon;
 
   @HiveField(3)
-  DateTime datescompleted;
+  List<DateTime> datescompleted;
 
   Habits({
     required this.title,
