@@ -25,36 +25,44 @@ class _HabitsScreenState extends State<HabitsScreen> {
             itemBuilder: (context, index) {
               final habit = box.getAt(index);
 
-              return ListTile(
-                title: Text(
-                  habit!.title,
-                  style: TextStyle(
-                    color: widget.accentColor,
-                    fontWeight: FontWeight.bold,
+              return GestureDetector(
+                child: ListTile(
+                  title: Text(
+                    habit!.title,
+                    style: TextStyle(
+                      color: widget.accentColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "🔥 ${calculateStreak(habit)} day streak",
+                    style: TextStyle(color: widget.accentColor, fontSize: 12),
+                  ),
+
+                  trailing: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        final today = DateTime.now();
+
+                        if (!isCompletedToday(habit)) {
+                          habit.datescompleted.add(today);
+                          habit.save();
+                        }
+                      });
+                    },
+                    icon: Icon(
+                      isCompletedToday(habit)
+                          ? Icons.check_circle
+                          : Icons.radio_button_unchecked,
+                    ),
                   ),
                 ),
-                subtitle: Text(
-                  "🔥 ${calculateStreak(habit)} day streak",
-                  style: TextStyle(color: widget.accentColor, fontSize: 12),
-                ),
-
-                trailing: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      final today = DateTime.now();
-
-                      if (!isCompletedToday(habit)) {
-                        habit.datescompleted.add(today);
-                        habit.save();
-                      }
-                    });
-                  },
-                  icon: Icon(
-                    isCompletedToday(habit)
-                        ? Icons.check_circle
-                        : Icons.radio_button_unchecked,
-                  ),
-                ),
+                onLongPress: () {
+                  habit.delete();
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text("Deleted Habit")));
+                },
               );
             },
           );
