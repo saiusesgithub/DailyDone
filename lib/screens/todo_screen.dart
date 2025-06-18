@@ -16,135 +16,113 @@ class _TodoScreenState extends State<TodoScreen> {
   Widget build(BuildContext context) {
     final todobox = Hive.box<Todo>('todos');
 
-    return ValueListenableBuilder(
-      valueListenable: todobox.listenable(),
-      builder: (context, Box<Todo> box, _) {
-        final todos = box.values.toList();
+    return Scaffold(
+      body: ValueListenableBuilder(
+        valueListenable: todobox.listenable(),
+        builder: (context, Box<Todo> box, _) {
+          final todos = box.values.toList();
 
-        final highpriority = todos
-            .where((t) => !t.isDone && t.priority)
-            .toList();
-        final normal = todos.where((t) => !t.isDone && !t.priority).toList();
-        final completed = todos.where((t) => t.isDone).toList();
+          todos.sort((a, b) {
+            if (a.isDone != b.isDone) return a.isDone ? 1 : -1;
+            if (a.priority != b.priority) return a.isDone ? 1 : -1;
+            return 0;
+          });
 
-        todos.sort((a, b) {
-          if (a.isDone != b.isDone) return a.isDone ? 1 : -1;
-          if (a.priority != b.priority) return a.isDone ? 1 : -1;
-          return 0;
-        });
-
-        return Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: todos.length,
-                itemBuilder: (context, index) {
-                  final todo = todos[index];
-                  return Dismissible(
-                    key: Key(todo.key.toString()),
-                    onDismissed: (direction) {
-                      todo.delete();
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text('Task deleted')));
-                    },
-                    background: Container(
-                      color: Colors.red,
-                      alignment: Alignment.centerRight,
-                      padding: EdgeInsets.only(right: 20),
-                      child: Icon(Icons.delete, color: Colors.white),
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        todo.title,
-                        style: TextStyle(
-                          color: Colors.white,
-                          decoration: todo.isDone
-                              ? TextDecoration.lineThrough
-                              : null,
-                        ),
+          if (box.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.hourglass_empty, color: Colors.grey, size: 64),
+                  SizedBox(height: 12),
+                  Text(
+                    "No Tasks Yet!",
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                  ),
+                ],
+              ),
+            );
+          }
+          return Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: todos.length,
+                  itemBuilder: (context, index) {
+                    final todo = todos[index];
+                    return Dismissible(
+                      key: Key(todo.key.toString()),
+                      onDismissed: (direction) {
+                        todo.delete();
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text('Task deleted')));
+                      },
+                      background: Container(
+                        color: Colors.red,
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.only(right: 20),
+                        child: Icon(Icons.delete, color: Colors.white),
                       ),
-                      subtitle: Text(
-                        todo.description,
-                        style: TextStyle(
-                          color: Colors.white,
-                          decoration: todo.isDone
-                              ? TextDecoration.lineThrough
-                              : null,
+                      child: ListTile(
+                        title: Text(
+                          todo.title,
+                          style: TextStyle(
+                            color: Colors.white,
+                            decoration: todo.isDone
+                                ? TextDecoration.lineThrough
+                                : null,
+                          ),
                         ),
-                      ),
-                      trailing: Checkbox(
-                        value: todo.isDone,
-                        onChanged: (value) {
-                          todo.isDone = value!;
-                          todo.save();
+                        subtitle: Text(
+                          todo.description,
+                          style: TextStyle(
+                            color: Colors.white,
+                            decoration: todo.isDone
+                                ? TextDecoration.lineThrough
+                                : null,
+                          ),
+                        ),
+                        trailing: Checkbox(
+                          value: todo.isDone,
+                          onChanged: (value) {
+                            todo.isDone = value!;
+                            todo.save();
+                          },
+                        ),
+                        onLongPress: () {
+                          todo.delete();
                         },
                       ),
-                      onLongPress: () {
-                        todo.delete();
-                      },
-                    ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(15),
-              alignment: Alignment.bottomRight,
-              child: FloatingActionButton.extended(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) =>
-                          Addingtask(accentColor: widget.accentColor),
-                    ),
-                  );
-                },
-                label: Text(
-                  "New Task",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                    );
+                  },
                 ),
-                icon: Icon(Icons.add),
-                backgroundColor: widget.accentColor,
-                foregroundColor: Color.fromRGBO(13, 13, 13, 1.0),
               ),
-            ),
-          ],
-        );
-      },
+            ],
+          );
+        },
+      ),
+      floatingActionButton: Container(
+        padding: EdgeInsets.all(15),
+        alignment: Alignment.bottomRight,
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => Addingtask(accentColor: widget.accentColor),
+              ),
+            );
+          },
+          label: Text(
+            "New Task",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          icon: Icon(Icons.add),
+          backgroundColor: widget.accentColor,
+          foregroundColor: Color.fromRGBO(13, 13, 13, 1.0),
+        ),
+      ),
     );
   }
 }
-
-
-
-
-// Column(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       children: [
-//         Text('this is todo screen', style: TextStyle(color: Colors.white)),
-
-//         Container(
-//           padding: EdgeInsets.all(15),
-//           alignment: Alignment.bottomRight,
-//           child: FloatingActionButton.extended(
-//             onPressed: () {
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                   builder: (_) => Addingtask(accentColor: widget.accentColor),
-//                 ),
-//               );
-//             },
-//             label: Text(
-//               "New Task",
-//               style: TextStyle(fontWeight: FontWeight.bold),
-//             ),
-//             icon: Icon(Icons.add),
-//             backgroundColor: widget.accentColor,
-//             foregroundColor: Color.fromRGBO(13, 13, 13, 1.0),
-//           ),
-//         ),
-//       ],
-//     );

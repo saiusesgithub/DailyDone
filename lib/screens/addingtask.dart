@@ -70,26 +70,25 @@ class _AddingtaskState extends State<Addingtask> {
                     SizedBox(height: 20),
 
                     TextField(
-                        controller: descriptioncontroller,
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: widget.accentColor),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: widget.accentColor),
-                          ),
-                          labelText: "Description",
-                          labelStyle: TextStyle(
-                            color: widget.accentColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                          floatingLabelAlignment: FloatingLabelAlignment.center,
+                      controller: descriptioncontroller,
+                      decoration: InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: widget.accentColor),
                         ),
-                        maxLines: 3,
-                        minLines: 1,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: widget.accentColor),
+                        ),
+                        labelText: "Description",
+                        labelStyle: TextStyle(
+                          color: widget.accentColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                        floatingLabelAlignment: FloatingLabelAlignment.center,
                       ),
-                    
+                      maxLines: 3,
+                      minLines: 1,
+                    ),
 
                     SizedBox(height: 20),
                     SwitchListTile(

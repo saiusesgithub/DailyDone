@@ -23,11 +23,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     List<Widget> pages = [
       TodoScreen(accentColor: widget.accentColor),
-      HabitsScreen(accentColor: widget.accentColor,),
+      HabitsScreen(accentColor: widget.accentColor),
     ];
 
     return Scaffold(
-      drawerEdgeDragWidth: MediaQuery.of(context).size.width * 0.9, 
+      drawerEdgeDragWidth: MediaQuery.of(context).size.width * 0.9,
       backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
       appBar: AppBar(
         title: Text("DailyDone", style: TextStyle(fontWeight: FontWeight.bold)),
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fit: BoxFit.contain,
                             filterQuality: FilterQuality.low,
                           ),
-                
+
                           Text(
                             "DailyDone",
                             style: TextStyle(
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                
+
                     ListTile(
                       leading: Icon(Icons.settings),
                       title: Text(
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       onTap: () {
                         Navigator.pop(context);
-                
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -120,9 +120,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                     ),
-                
+
                     ListTile(
-                      leading: Icon(Icons.info,),
+                      leading: Icon(Icons.info),
                       title: Text(
                         "About",
                         style: TextStyle(color: widget.accentColor),

@@ -14,12 +14,25 @@ class HabitsScreen extends StatefulWidget {
 class _HabitsScreenState extends State<HabitsScreen> {
   @override
   Widget build(BuildContext context) {
-    final habitsbox = Hive.box<Habits>('habitBox');
-
     return Scaffold(
       body: ValueListenableBuilder(
         valueListenable: Hive.box<Habits>('habitBox').listenable(),
         builder: (context, Box<Habits> box, _) {
+          if (box.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.hourglass_empty, color: Colors.grey, size: 64),
+                  SizedBox(height: 12),
+                  Text(
+                    "No Habits Yet!",
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                  ),
+                ],
+              ),
+            );
+          }
           return ListView.builder(
             itemCount: box.length,
             itemBuilder: (context, index) {
