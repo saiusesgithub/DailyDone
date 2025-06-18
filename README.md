@@ -1,16 +1,55 @@
-# daily_done
+# 📝 DailyDone
 
-A new Flutter project.
+**DailyDone** is a modern habit & task tracker built with Flutter.  
+Track habits, organize todos, and stay consistent — all in a clean, minimal, dark-themed app.
 
-## Getting Started
+![Banner or Screenshot](link-if-available)
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Features (v0.1 MVP)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- ✅ Add / complete / delete todos
+- 🔁 Habit tracker with daily check-ins & streaks
+- 🌓 Dark UI with accent color picker
+- 📦 Offline storage with Hive
+- 🎯 Long-press to delete habits
+- 📋 Empty state messages & snackbars
+- 📄 About page included
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🧩 Tech Stack
+
+- **Flutter** — Cross-platform framework  
+- **Hive** — Lightweight local DB  
+- **Shared Preferences** — For theme preferences
+
+---
+
+## 🗂️ Downloads
+
+| Platform     | Build           | Download |
+|--------------|------------------|----------|
+| **Android**  | `release.apk`    | [Download APK](https://github.com/yourusername/DailyDone/releases/latest) |
+| **Web**      | GitHub Pages     | [Try Online](https://saiusesgithub.github.io/DailyDone) |
+| **Windows**  | `.exe`           | [Download EXE](https://github.com/yourusername/DailyDone/releases/latest) |
+
+---
+
+## 📈 Roadmap
+
+See planned features & release milestones in [ROADMAP.md](ROADMAP.md)
+
+---
+
+📤 Publishing
+You can find builds in the Releases section.
+The web version is hosted on GitHub Pages.
+
+👨‍💻 Developer
+Made with ❤️ by Sai Srujan
+🔗 GitHub Profile
+
+🪪 License
+This project is open-source under the MIT License.
