@@ -7,12 +7,14 @@ Track habits, organize your to-dos, and build consistency — all within a sleek
 > Proudly created as a solo developer project by **sAI sRUJAN**.
 
 ## Screenshots
+<p align="center">
+  <img src="assets/screenshots/dd1.jpg" width="150"/>
+  <img src="assets/screenshots/dd2.jpg" width="150"/>
+  <img src="assets/screenshots/dd3.jpg" width="150"/>
+  <img src="assets/screenshots/dd4.jpg" width="150"/>
+  <img src="assets/screenshots/dd5.jpg" width="150"/>
+</p>
 
-![dd1](assets/screenshots/dd1.jpg)
-![dd2](assets/screenshots/dd2.jpg)
-![dd3](assets/screenshots/dd3.jpg)
-![dd4](assets/screenshots/dd4.jpg)
-![dd5](assets/screenshots/dd5.jpg)
 
 ---
 
