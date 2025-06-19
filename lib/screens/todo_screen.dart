@@ -51,6 +51,7 @@ class _TodoScreenState extends State<TodoScreen> {
                   itemBuilder: (context, index) {
                     final todo = todos[index];
                     return Dismissible(
+                      direction: DismissDirection.endToStart,
                       key: Key(todo.key.toString()),
                       onDismissed: (direction) {
                         todo.delete();
@@ -90,9 +91,6 @@ class _TodoScreenState extends State<TodoScreen> {
                             todo.save();
                           },
                         ),
-                        onLongPress: () {
-                          todo.delete();
-                        },
                       ),
                     );
                   },
