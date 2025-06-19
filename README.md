@@ -38,9 +38,9 @@ Track habits, organize your to-dos, and build consistency — all within a sleek
 
 | Platform     | Build Type       | Download |
 |--------------|------------------|----------|
-| **📱 Android**  | APK Release       | [Download APK](https://github.com/yourusername/DailyDone/releases/latest) |
+| **📱 Android**  | APK Release       | [Download APK](https://github.com/saiusesgithub/DailyDone/releases/latest) |
 | **🌐 Web**      | GitHub Pages      | [Try it Online](https://saiusesgithub.github.io/DailyDone_Web) |
-| **🖥️ Windows**  | Standalone EXE (ZIP) | [Download EXE](https://github.com/yourusername/DailyDone/releases/latest) |
+| **🖥️ Windows**  | Standalone EXE (ZIP) | [Download EXE](https://github.com/saiusesgithub/DailyDone/releases/latest) |
 
 ---
 
