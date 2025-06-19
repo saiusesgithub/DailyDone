@@ -6,7 +6,13 @@ Track habits, organize your to-dos, and build consistency — all within a sleek
 > 🚧 Built completely from scratch in just 10 days — no tutorials, no code copying — just pure problem-solving and UI crafting.  
 > Proudly created as a solo developer project by **sAI sRUJAN**.
 
-![Screenshot or Banner](link-if-available)
+## Screenshots
+
+![dd1](assets/screenshots/dd1.jpg)
+![dd2](assets/screenshots/dd2.jpg)
+![dd3](assets/screenshots/dd3.jpg)
+![dd4](assets/screenshots/dd4.jpg)
+![dd5](assets/screenshots/dd5.jpg)
 
 ---
 
