@@ -2,6 +2,7 @@ import 'package:daily_done/screens/habits_screen.dart';
 import 'package:daily_done/screens/settings.dart';
 import 'package:daily_done/screens/todo_screen.dart';
 import 'package:flutter/material.dart';
+import 'addingtask.dart';
 
 class HomeScreen extends StatefulWidget {
   final Color accentColor;
@@ -27,7 +28,29 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
 
     return Scaffold(
-      drawerEdgeDragWidth: MediaQuery.of(context).size.width * 0.9,
+      floatingActionButton: selectedIndex == 0
+    ? FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => Addingtask(accentColor: widget.accentColor),
+            ),
+          );
+        },
+        label: Text(
+          "New Task",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        icon: Icon(Icons.add),
+        backgroundColor: widget.accentColor,
+        foregroundColor: Color.fromRGBO(13, 13, 13, 1.0),
+      )
+    : null,
+      drawerEdgeDragWidth: 20.0,
+      drawerEnableOpenDragGesture: false,
+
+      
       backgroundColor: Color.fromRGBO(18, 18, 18, 1.0),
       appBar: AppBar(
         title: Text("DailyDone", style: TextStyle(fontWeight: FontWeight.bold)),
