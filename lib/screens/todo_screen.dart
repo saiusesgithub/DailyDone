@@ -69,7 +69,7 @@ class _TodoScreenState extends State<TodoScreen> {
                         title: Text(
                           todo.title,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: widget.accentColor,
                             decoration: todo.isDone
                                 ? TextDecoration.lineThrough
                                 : null,
@@ -78,7 +78,7 @@ class _TodoScreenState extends State<TodoScreen> {
                         subtitle: Text(
                           todo.description,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: widget.accentColor,
                             decoration: todo.isDone
                                 ? TextDecoration.lineThrough
                                 : null,
