@@ -1,55 +1,80 @@
 # 📝 DailyDone
 
-**DailyDone** is a modern habit & task tracker built with Flutter.  
-Track habits, organize todos, and stay consistent — all in a clean, minimal, dark-themed app.
+**DailyDone** is a modern, minimalistic **habit & task tracker** built entirely with Flutter.  
+Track habits, organize your to-dos, and build consistency — all within a sleek, dark-themed interface.
 
-![Banner or Screenshot](link-if-available)
+> 🚧 Built completely from scratch in just 10 days — no tutorials, no code copying — just pure problem-solving and UI crafting.  
+> Proudly created as a solo developer project by **sAI sRUJAN**.
+
+![Screenshot or Banner](link-if-available)
 
 ---
 
-## 🚀 Features (v0.1 MVP)
+## 🚀 Features – v0.1 MVP
 
-- ✅ Add / complete / delete todos
-- 🔁 Habit tracker with daily check-ins & streaks
-- 🌓 Dark UI with accent color picker
-- 📦 Offline storage with Hive
+- ✅ Add, complete, and delete todo tasks
+- 🔁 Habit tracker with daily check-ins and automatic streak calculation
+- 🎨 Dark UI with customizable accent color
+- 📦 Local data persistence using Hive (offline-first)
+- 📋 Empty state visuals and snackbar feedback
 - 🎯 Long-press to delete habits
-- 📋 Empty state messages & snackbars
-- 📄 About page included
+- ℹ️ Includes an About page
+- 🔒 No login or internet required
 
 ---
 
 ## 🧩 Tech Stack
 
-- **Flutter** — Cross-platform framework  
-- **Hive** — Lightweight local DB  
-- **Shared Preferences** — For theme preferences
+| Tool | Description |
+|------|-------------|
+| **Flutter** | Cross-platform app development |
+| **Hive** | Lightweight NoSQL local database |
+| **Shared Preferences** | Persistent theme settings |
+| **IndexedDB** | Used by Hive on web for persistent browser storage |
 
 ---
 
-## 🗂️ Downloads
+## 💻 Platforms & Downloads
 
-| Platform     | Build           | Download |
+| Platform     | Build Type       | Download |
 |--------------|------------------|----------|
-| **Android**  | `release.apk`    | [Download APK](https://github.com/yourusername/DailyDone/releases/latest) |
-| **Web**      | GitHub Pages     | [Try Online](https://saiusesgithub.github.io/DailyDone) |
-| **Windows**  | `.exe`           | [Download EXE](https://github.com/yourusername/DailyDone/releases/latest) |
+| **📱 Android**  | APK Release       | [Download APK](https://github.com/saiusesgithub/DailyDone/releases/latest) |
+| **🌐 Web**      | GitHub Pages      | [Try it Online](https://saiusesgithub.github.io/DailyDone_Web) |
+| **🖥️ Windows**  | Standalone EXE (ZIP) | [Download EXE](https://github.com/saiusesgithub/DailyDone/releases/latest) |
 
 ---
 
-## 📈 Roadmap
+## 🗺️ Roadmap
 
-See planned features & release milestones in [ROADMAP.md](ROADMAP.md)
+Planned features & upcoming releases → [ROADMAP.md](ROADMAP.md)
+
+Some ideas in the pipeline:
+- 🔔 Notification reminders
+- 📊 Weekly habit analytics
+- 🧠 Smart streak recovery
+- 🧩 Category-wise task filters
+- 🔒 PIN/biometric lock
 
 ---
 
-📤 Publishing
-You can find builds in the Releases section.
-The web version is hosted on GitHub Pages.
+## 📤 Publishing & Hosting
 
-👨‍💻 Developer
-Made with ❤️ by Sai Srujan
-🔗 GitHub Profile
+- ✅ Releases are available under the [Releases section](https://github.com/yourusername/DailyDone/releases)
+- ✅ Web version is hosted via GitHub Pages for instant browser access
 
-🪪 License
-This project is open-source under the MIT License.
+---
+
+## 👨‍💻 Creator
+
+Built with ❤️ by **Sai Srujan**  
+🔗 [GitHub Profile](https://github.com/saiusesgithub)
+
+> Feedback, feature ideas, or collaboration? Feel free to open an issue or drop a star ⭐
+
+---
+
+## 🪪 License
+
+This project is licensed under the **MIT License** – open-source, free to use, and contribute to.
+
+---
